@@ -3,7 +3,9 @@
 
 # A. Cleansing lanjutan ####
 
-df <- read.csv("pariwisata.csv")
+library(readr)
+df <- read_csv("KMMI_R/kmmi_r/pariwisata.csv")
+View(pariwisata)
 
 # proses
 # - casefold
@@ -42,10 +44,10 @@ fungsi_proses <- function(a){
     stri_replace_all_fixed(old,new,vectorize_all = FALSE) %>%
     removeWords(stopwords(language = "id",source = "nltk")) %>%
     removeWords(hapus)
-  #strsplit(" ") %>% # membuat kalimat jadi kumpulan kata
-  #unlist() %>%
-  #sapply(katadasaR) %>%
-  #paste(collapse = " ")
+    #strsplit(" ") %>% # membuat kalimat jadi kumpulan kata
+    #unlist() %>%
+    #sapply(katadasaR) %>%
+    #paste(collapse = " ")
 }
 
 dfnew <- mutate(df,komentar_bersih=sapply(full_text,fungsi_proses))

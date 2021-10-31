@@ -9,16 +9,11 @@ library(katadasaR)
 library(stringi)
 library(qdapRegex)
 
-#untuk tugas akhir, filter dulu berdasarkan subtema
-#misal subtema: masyarakat|warga
-library(stringr) #filter tergantung kebutuhan
-dffilter <- filter (df,str_detect(text,"masyarakat|warga"))
-df <- df %>% head (10000)
 
 # B. Persiapan data network ####
 
 # B.1. ambil kolom user dan teks
-df1 <- dffilter %>% select(screen_name,text)
+df1 <- df %>% select(screen_name,text)
 
 # B.2. tambah @ ke username
 df1$screen_name <- paste0('@',df1$screen_name)
